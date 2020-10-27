@@ -2,18 +2,6 @@ import React from "react";
 
 import "components/Application.scss";
 
-// function Button(props) {
-//   return <button>{props.children}</button>;
-// }
-
-// export default function Application(props) {
-//   return (
-//     <main>
-//       <Button>Reset</Button>
-//     </main>
-//   );
-// }
-
 export default function Application(props) {
   return (
     <main className="layout">
