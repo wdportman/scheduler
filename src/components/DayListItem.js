@@ -16,21 +16,22 @@ const formatSpots = function(num) {
 };
 
 export default function DayListItem(props) {
+  const {selected, spots, setDay, name} = props;
   const dayListItemClass = classNames({
     'day-list__item': true,
-    'day-list__item--selected': props.selected,
-    'day-list__item--full': props.spots === 0
+    'day-list__item--selected': selected,
+    'day-list__item--full': spots === 0
   });
   return (
     <li
       className={dayListItemClass}
-      onClick={() => props.setDay(props.name)}>
+      onClick={() => setDay(name)}>
         <h2
           className="text--regular">
-            {props.name}
+            {name}
         </h2>
         <h3 className="text--light">
-          {formatSpots(props.spots)}
+          {formatSpots(spots)}
         </h3>
     </li>
   );
