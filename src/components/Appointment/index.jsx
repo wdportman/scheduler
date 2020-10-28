@@ -1,6 +1,6 @@
 import React from "react";
 
-import "../styling/appointment.scss";
+import "../styling/Appointment.scss";
 
 export default function Appointment(props) {
   return(

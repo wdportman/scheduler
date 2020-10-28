@@ -13,6 +13,8 @@ import InterviewerList from 'components/InterviewerList.jsx';
 import Appointment from 'components/Appointment/index.jsx';
 import Header from 'components/Appointment/Header.jsx';
 import Empty from 'components/Appointment/Empty.jsx';
+import Show from 'components/Appointment/Show.jsx';
+import Confirm from "components/Appointment/Confirm";
 
 storiesOf("Button", module)
   .addParameters({
@@ -149,4 +151,15 @@ storiesOf("Appointment", module)
   />)
   .add("Empty", () => <Empty
     onAdd ={action('onAdd')}
+  />)
+  .add("Show", () => <Show
+    student = 'Lydia Miller-Jones'
+    interviewer = {interviewer.name}
+    onEdit = {action('onEdit')}
+    onDelete = {action('onDelete')}
+  />)
+  .add("Confirm", () => <Confirm
+    message = "Delete the appointment?"
+    onConfirm = {action('onConfirm')}
+    onCancel = {action('onCancel')}
   />)
