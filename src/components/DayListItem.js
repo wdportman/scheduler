@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from 'classnames';
 
-import 'components/DayListItem.scss';
+import 'components/styling/DayListItem.scss';
 
 const formatSpots = function(num) {
   if (num === 0) {
