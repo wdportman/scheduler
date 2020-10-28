@@ -2,7 +2,9 @@ import React, { useState } from "react";
 
 import "components/styling/Application.scss";
 import DayList from "components/DayList";
+import Appointment from "components/Appointment";
 
+//The below is placeholder data to test out the sidebar view:
 const days = [
   {
     id: 1,
@@ -21,6 +23,55 @@ const days = [
   }
 ];
 
+//The below is placeholder data to test out the schedule view:
+const appointments = [
+  {
+    id: 1,
+    time: "12pm",
+  },
+  {
+    id: 2,
+    time: "1pm",
+    interview: {
+      student: "Lydia Miller-Jones",
+      interviewer: {
+        id: 1,
+        name: "Sylvia Palmer",
+        avatar: "https://i.imgur.com/LpaY82x.png",
+      }
+    }
+  },
+  {
+    id: 3,
+    time: "2pm",
+    interview: {
+      student: "Will Portman",
+      interviewer: {
+        id: 2,
+        name: "Tori Malcolm",
+        avatar: "https://i.imgur.com/Nmx0Qxo.png",
+      }
+    }
+  },
+  {
+    id: 4,
+    time: "3pm",
+  },
+  {
+    id: 5,
+    time: "4pm",
+    interview: {
+      student: "Johnny Appleseed",
+      interviewer: {
+        id: 3,
+        name: "Mildred Nazir",
+        avatar: "https://i.imgur.com/T2WwVfS.png",
+      }
+    }
+  }
+];
+
+//Beginning of the Application component:
 export default function Application(props) {
   const [day, setDay] = useState(0);
   return (
@@ -45,7 +96,13 @@ export default function Application(props) {
           alt="Lighthouse Labs"
         />      </section>
       <section className="schedule">
-        {/* Replace this with the schedule elements durint the "The Scheduler" activity. */}
+        {appointments.map(appointment => {
+          const { id, time, interview } = appointment;
+          return (
+            <Appointment key={appointment.id} {...appointment} />
+          )
+        })}
+        <Appointment key="last" time="5pm" />
       </section>
     </main>
   );
