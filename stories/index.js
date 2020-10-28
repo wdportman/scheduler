@@ -19,10 +19,12 @@ import Status from "components/Appointment/Status.jsx";
 import Error from "components/Appointment/Error.jsx";
 import Form from "components/Appointment/Form.jsx";
 
+const darkBackground = {backgrounds: [{ name: "dark", value: "#222f3e", default: true }]};
+
+const lightBackground = {backgrounds: [{ name: "white", value: "#fff", default: true }]};
+
 storiesOf("Button", module)
-  .addParameters({
-    backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
-  })
+  .addParameters(darkBackground)
   .add("Base", () => <Button>Base</Button>)
   .add("Confirm", () => <Button confirm>Confirm</Button>)
   .add("Danger", () => <Button danger>Cancel</Button>)
@@ -36,9 +38,7 @@ storiesOf("Button", module)
   ));
 
 storiesOf("DayListItem", module)
-    .addParameters({
-      backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
-    })
+    .addParameters(darkBackground)
     .add("Unselected", () => <DayListItem name="Monday" spots={5} />)
     .add("Selected", () => <DayListItem name="Monday" spots={5} selected />) 
     .add("Full", () => <DayListItem name="Monday" spots={0} />)
@@ -67,9 +67,7 @@ const days = [
 ];
 
 storiesOf("DayList", module)
-  .addParameters({
-    backgrounds: [{ name: "dark", value: "#222f3e", default: true }],
-  })
+  .addParameters(darkBackground)
   .add("Monday", () => (
     <DayList days={days} day={"Monday"} setDay={action("setDay")} />
   ))
@@ -86,9 +84,7 @@ const interviewer = {
 };
   
 storiesOf("InterviewerListItem", module)
-  .addParameters({
-    backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
-  })
+  .addParameters(darkBackground)
   .add("Unselected", () => (
     <InterviewerListItem
       id={interviewer.id}
@@ -124,9 +120,7 @@ const interviewers = [
 ];
 
 storiesOf("InterviewerList", module)
-  .addParameters({
-    backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
-  })
+  .addParameters(darkBackground)
   .add("Initial", () => (
     <InterviewerList
       interviewers={interviewers}
@@ -142,9 +136,7 @@ storiesOf("InterviewerList", module)
   ));
 
 storiesOf("Appointment", module)
-  .addParameters({
-    backgrounds: [{ name: "white", value: "#fff", default: true }]
-  })
+  .addParameters(lightBackground)
   .add("Appointment", () => <Appointment />)
   .add("Appointment with time", () => <Appointment 
     time='12pm'
