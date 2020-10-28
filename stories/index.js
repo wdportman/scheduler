@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Fragment} from "react";
 
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
@@ -17,6 +17,7 @@ import Show from 'components/Appointment/Show.jsx';
 import Confirm from "components/Appointment/Confirm.jsx";
 import Status from "components/Appointment/Status.jsx";
 import Error from "components/Appointment/Error.jsx";
+import Form from "components/Appointment/Form.jsx";
 
 storiesOf("Button", module)
   .addParameters({
@@ -148,6 +149,12 @@ storiesOf("Appointment", module)
   .add("Appointment with time", () => <Appointment 
     time='12pm'
   />)
+  .add("Appointment Empty", () => (
+    <Fragment>
+      <Appointment id={1} time="12pm" />
+      <Appointment id="last" time="1pm" />
+    </Fragment>
+  ))
   .add("Header", () => <Header 
     time='12pm'
   />)
@@ -178,4 +185,16 @@ storiesOf("Appointment", module)
   .add("Error Deleting", () => <Error
     message="Could not delete appointment"
     onClose={action('onClose')}
+  />)
+  .add("Edit", () => <Form
+    name="Will Portman"
+    interviewers={interviewers}
+    interviewer={1}
+    onSave={action('onSave')}
+    onCancel={action('onCancel')}
+  />)
+  .add("Create", () => <Form
+    interviewers={interviewers}
+    onSave={action('onSave')}
+    onCancel={action('onCancel')}
   />)
