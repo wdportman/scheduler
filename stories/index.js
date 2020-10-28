@@ -14,7 +14,9 @@ import Appointment from 'components/Appointment/index.jsx';
 import Header from 'components/Appointment/Header.jsx';
 import Empty from 'components/Appointment/Empty.jsx';
 import Show from 'components/Appointment/Show.jsx';
-import Confirm from "components/Appointment/Confirm";
+import Confirm from "components/Appointment/Confirm.jsx";
+import Status from "components/Appointment/Status.jsx";
+import Error from "components/Appointment/Error.jsx";
 
 storiesOf("Button", module)
   .addParameters({
@@ -162,4 +164,18 @@ storiesOf("Appointment", module)
     message = "Delete the appointment?"
     onConfirm = {action('onConfirm')}
     onCancel = {action('onCancel')}
+  />)
+  .add("Saving", () => <Status
+    message="Saving"
+  />)
+  .add("Deleting", () => <Status
+    message="Deleting"
+  />)
+  .add("Error Saving", () => <Error
+    message="Could not save appointment"
+    onClose={action('onClose')}
+  />)
+  .add("Error Deleting", () => <Error
+    message="Could not delete appointment"
+    onClose={action('onClose')}
   />)
