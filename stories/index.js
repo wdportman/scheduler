@@ -5,10 +5,10 @@ import { action } from "@storybook/addon-actions";
 
 import "index.scss";
 
-import Button from "components/Button";
-import DayListItem from "components/DayListItem";
-import DayList from "components/DayList";
-import InterviewerListItem from 'components/InterviewerListItem';
+import Button from "components/Button.jsx";
+import DayListItem from "components/DayListItem.jsx";
+import DayList from "components/DayList.jsx";
+import InterviewerListItem from 'components/InterviewerListItem.jsx';
 
 storiesOf("Button", module)
   .addParameters({
