@@ -1,27 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
 
 import "components/styling/Application.scss";
 import DayList from "components/DayList";
 import Appointment from "components/Appointment";
-
-//The below is placeholder data to test out the sidebar view:
-const days = [
-  {
-    id: 1,
-    name: "Monday",
-    spots: 2,
-  },
-  {
-    id: 2,
-    name: "Tuesday",
-    spots: 5,
-  },
-  {
-    id: 3,
-    name: "Wednesday",
-    spots: 0,
-  }
-];
 
 //The below is placeholder data to test out the schedule view:
 const appointments = [
@@ -73,7 +55,15 @@ const appointments = [
 
 //Beginning of the Application component:
 export default function Application(props) {
-  const [day, setDay] = useState(0);
+  
+  const [day, setDay] = useState("Monday");
+  const [days, setDays] = useState([]);
+
+  useEffect(() => {
+    axios.get('/api/days')
+      .then(response => setDays(response.data))
+  }, [])
+
   return (
     <main className="layout">
       <section className="sidebar">
