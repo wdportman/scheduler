@@ -1,4 +1,7 @@
 export function getAppointmentsForDay(state, day) {
+  if (!state.days[0]) {
+    return [];
+  }
   let apptIds = [];
   for (const singleDay of state.days) {
     if (singleDay.name === day) {
@@ -6,8 +9,13 @@ export function getAppointmentsForDay(state, day) {
     }
   }
   const output = [];
+  const appointmentKeys = Object.keys(state.appointments);
   for (const apptId of apptIds) {
-    output.push(state.appointments[`${apptId}`]);
+    for (const appointmentKey of appointmentKeys) {
+      if (state.appointments[appointmentKey].id === apptId) {
+        output.push(state.appointments[appointmentKey]);
+      }
+    }
   }
   return output;
 };
