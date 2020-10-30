@@ -30,7 +30,6 @@ export default function Application(props) {
   const appointments = getAppointmentsForDay(state, state.day).map(appointment => {
     const {id, time} = appointment;
     const interview = getInterview(state, appointment.interview);
-
     return (
     <Appointment
       key={id}
@@ -60,7 +59,8 @@ export default function Application(props) {
           className="sidebar__lhl sidebar--centered"
           src="images/lhl.png"
           alt="Lighthouse Labs"
-        />      </section>
+        />
+      </section>
       <section className="schedule">
         {appointments}
         <Appointment key="last" time="5pm" />
