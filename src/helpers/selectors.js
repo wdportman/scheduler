@@ -22,7 +22,7 @@ const getAppointmentsForDay = (state, day) => {
 
 const getInterviewersForDay = (state, day) => {
   let intIds = [];
-  const output = [];
+  let output = [];
   for (const singleDay of state.days) {
     if (singleDay.name === day) {
       intIds = [...singleDay.interviewers]
