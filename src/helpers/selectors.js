@@ -1,6 +1,6 @@
 const getAppointmentsForDay = (state, day) => {
-let apptIds = [];
-const output = [];
+  let apptIds = [];
+  const output = [];
   for (const singleDay of state.days) {
     if (singleDay.name === day) {
       apptIds = [...singleDay.appointments]
@@ -19,6 +19,29 @@ const output = [];
   return output;
 };
 
+
+const getInterviewersForDay = (state, day) => {
+  let intIds = [];
+  const output = [];
+  for (const singleDay of state.days) {
+    if (singleDay.name === day) {
+      intIds = [...singleDay.interviewers]
+    }
+  }
+  if (state.interviewers) {
+    const interviewerKeys = Object.keys(state.interviewers);
+    for (const intId of intIds) {
+      for (const interviewerKey of interviewerKeys) {
+        if (state.interviewers[interviewerKey].id === intId) {
+          output.push(state.interviewers[interviewerKey]);
+        }
+      }
+    }
+  }
+  return output;
+};
+
+
 const getInterview = (state, interview) => {
   let output = {};
   if (!interview) {
@@ -35,4 +58,4 @@ const getInterview = (state, interview) => {
   return output;
 }
 
-export { getAppointmentsForDay, getInterview }
+export { getAppointmentsForDay, getInterviewersForDay, getInterview }
