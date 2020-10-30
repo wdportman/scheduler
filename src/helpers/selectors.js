@@ -19,4 +19,17 @@ const output = [];
   return output;
 };
 
-export { getAppointmentsForDay }
+const getInterview = (state, interview) => {
+  let output = null;
+  if (interview) {
+    for (const interviewer in state.interviewers) {
+      if (state.interviewers[interviewer].id === interview.interviewer) {
+        interview.interviewer = state.interviewers[interviewer];
+        output = interview;
+      }
+    }
+  }
+  return output;
+};
+
+export { getAppointmentsForDay, getInterview }
