@@ -23,8 +23,8 @@ export default function Appointment(props) {
   const DELETING = "DELETING";
   const CONFIRM_CANCEL = "CONFIRM_CANCEL";
   const EDIT = "EDIT";
-  const ERROR_SAVING = "ERROR_SAVING";
-  const ERROR_DELETING = "ERROR_DELETING";
+  const ERROR_SAVE = "ERROR_SAVE";
+  const ERROR_DELETE = "ERROR_DELETE";
 
   const { mode, transition, back } = useVisualMode(
     interview ? SHOW : EMPTY
@@ -35,17 +35,17 @@ export default function Appointment(props) {
       student: name,
       interviewer
     };
-    transition(SAVING);
+    transition(SAVING, true);
     bookInterview(id, interview)
       .then(() => transition(SHOW))
-      .catch(error => transition(ERROR_SAVING, true));
+      .catch(error => transition(ERROR_SAVE, true));
   }
 
   function destroy() {
-    transition(DELETING);
+    transition(DELETING, true);
     cancelInterview(id)
       .then(() => transition(EMPTY))
-      .catch(error => transition(ERROR_DELETING, true));
+      .catch(error => transition(ERROR_DELETE, true));
   }
 
   function confirmDelete() {
@@ -103,14 +103,16 @@ export default function Appointment(props) {
         interviewer={interview.interviewer.id}
       />
       )}
-      {mode === ERROR_SAVING && (
+      {mode === ERROR_SAVE && (
         <Error
         message="Oops! There was an error saving your appointment."
+        onClose={() => back()}
       />
       )}
-      {mode === ERROR_DELETING && (
+      {mode === ERROR_DELETE && (
         <Error
         message="Oops! There was an error deleting your appointment."
+        onClose={() => back()}
       />
       )}
     </article>)
