@@ -54,7 +54,7 @@ const fixtures = {
   }
 };
 
-//Below is the object we are exporting for testing w/ methods that mimic API calls, which return data from the fixture data above.
+//Below is the object we are exporting w/ methods that mimic API calls, which return data from the fixture data above.
 export default {
   get: jest.fn(url => {
     if (url === "/api/days") {
@@ -80,5 +80,11 @@ export default {
         data: fixtures.interviewers
       });
     }
+  }),
+  put: jest.fn(url => {
+    return Promise.resolve({
+      status: 204,
+      statusText: "No Content"
+    })
   })
 };
