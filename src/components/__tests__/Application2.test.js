@@ -72,7 +72,7 @@ describe("Application", () => {
   it("shows the save error when failing to delete an appointment", async () => {
 
     axios.delete.mockRejectedValueOnce();
-
+    
     const { container } = render(<Application />);
 
     await waitForElement(() => getByText(container, "Archie Cohen"));
