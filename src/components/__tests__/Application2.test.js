@@ -1,4 +1,4 @@
-//NOTE: I split Application tests into two files, Application.test.js and Application2.test.js. Some tests were failing, apparently because the state was changed in one test and not cleaned up in the following test despite using "afterEach(cleanup)." After lots of googling, I debugged this with a mentor for a while, and the simplest solution ended up being to split the tests into two files.
+//NOTE: I split Application tests into two files, Application.test.js and Application2.test.js. Some tests were failing apparently because the state and/or DOM was changed in one test and not cleaned up before the following test despite using "afterEach(cleanup)." After lots of googling, I debugged this with a mentor for a while. After 2+ hours, in the interest of time, the simplest solution to get the tests to work ended up being to split the tests into two files.
 
 import React from "react";
 
