@@ -17,8 +17,10 @@ const useVisualMode = (initial) => {
   //The below function utilizes the history array to return to a previous state. E.g. if the user hits "cancel" when editing a card, it will return them to the Show mode.
   function back() {
     if (history.length > 1) {
-      history.pop();
-      setMode(history[history.length - 1]);
+      const newHistory = history;
+      newHistory.pop();
+      setHistory(newHistory);
+      setMode(history[history.length-1]);
     }
   };
 
