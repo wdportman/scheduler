@@ -8,7 +8,7 @@ import Status from 'components/Appointment/Status.jsx';
 import Confirm from 'components/Appointment/Confirm.jsx';
 import Error from 'components/Appointment/Error.jsx';
 
-import "../styling/appointment.scss";
+import "../styling/Appointment.scss";
 
 import { useVisualMode } from "../../hooks/useVisualMode.js";
 
