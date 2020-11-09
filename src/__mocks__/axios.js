@@ -1,3 +1,5 @@
+//This file mocks the making HTTP requests via Axios for the purpose of testing.
+
 //Fixture data for testing:
 const fixtures = {
   days: [

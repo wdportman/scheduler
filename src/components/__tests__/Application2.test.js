@@ -13,6 +13,7 @@ afterEach(cleanup);
 
 describe("Application", () => {
 
+  //This test ensures the app performs correctly when an existing interview appointment is edited.
   it("loads data, edits an interview, and keeps the spots remaining for Monday the same", async () => {
 
     const { container } = render(<Application />);
@@ -42,6 +43,7 @@ describe("Application", () => {
   });
 
 
+  //This test makes sure the user is shown an error message when an error occurs upon saving an appointment.
   it("shows the save error when failing to save an appointment", async () => {
 
     axios.put.mockRejectedValueOnce();
@@ -69,6 +71,7 @@ describe("Application", () => {
   });
 
 
+  //This test makes sure the user is shown an error message when an error occurs upon deleting an appointment.
   it("shows the save error when failing to delete an appointment", async () => {
 
     axios.delete.mockRejectedValueOnce();

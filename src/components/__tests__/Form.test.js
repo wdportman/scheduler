@@ -15,6 +15,8 @@ describe("Form", () => {
     }
   ];
 
+
+  //This test makes sure the student name field is blank if it's not been passed to the component.
   it("renders without student name if not provided", () => {
     const {getByPlaceholderText} = render(<Form 
       interviewers={interviewers}
@@ -22,6 +24,8 @@ describe("Form", () => {
     expect(getByPlaceholderText(/enter student name/i)).toHaveValue("");
   });
 
+
+  //This test makes sure the student name field displays the correct name if a name has been passed to the component.
   it("renders with initial student name", () => {
     const {getByTestId} = render(<Form 
       interviewers={interviewers}
@@ -30,6 +34,8 @@ describe("Form", () => {
     expect(getByTestId("student-name-input")).toHaveValue("Lydia Miller-Jones");
   });
   
+
+  //This test makes sure that, after an error message is displayed for not entering a student name, the appointment can later be saved once a name is entered.
   it("can successfully save after trying to submit an empty student name", () => {
     const onSave = jest.fn();
     const { getByText, getByPlaceholderText, queryByText } = render(
@@ -53,6 +59,8 @@ describe("Form", () => {
     expect(onSave).toHaveBeenCalledWith("Lydia Miller-Jones", null);
   });
 
+
+  //This test makes sure that canceling an edit operation performs as expected.
   it("calls onCancel and resets the input field", () => {
     const onCancel = jest.fn();
     const { getByText, getByPlaceholderText, queryByText } = render(

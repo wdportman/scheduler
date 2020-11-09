@@ -9,13 +9,16 @@ import { useApplicationData } from "../hooks/useApplicationData.js";
 
 export default function Application(props) {
 
+  //The functionality for the application component mostly lives in the useApplicationData hook, imported above. Below, we destructure the object returned by this function to get access to the state object and the three functions listed below.
   const { state, setDay, bookInterview, cancelInterview } = useApplicationData();
 
+  //The below loops through all appointments to render each one.
   const appointments = getAppointmentsForDay(state, state.day).map(appointment => {
     const {id, time} = appointment;
     const interview = getInterview(state, appointment.interview);
     const interviewers = getInterviewersForDay(state, state.day);
     return (
+      //The below code passes props to the appointment component.
     <Appointment
       key={id}
       id={id}

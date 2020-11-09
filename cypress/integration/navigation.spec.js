@@ -1,3 +1,5 @@
+//Simple test of sidebar navigation:
+
 describe("Navigation", () => {
 
   it("should navigate to Tuesday", () => {

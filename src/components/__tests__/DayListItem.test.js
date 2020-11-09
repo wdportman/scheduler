@@ -1,3 +1,5 @@
+//The tests in this file make sure that the "number of spots" functionality works in response to changing numbers of appointment spot availability.
+
 import React from "react";
 
 import { render, cleanup } from "@testing-library/react";

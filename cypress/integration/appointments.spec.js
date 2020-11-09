@@ -1,12 +1,15 @@
+//Test of appointments card functionality
+
 describe("Appointments", () => {
 
+  //This "beforeEach" resets the database and returns to the "Monday" view before each test runs:
   beforeEach(()=> {
-    //GET request to reset test database:
     cy.request("GET","http://localhost:8001/api/debug/reset")
     cy.visit("/");
     cy.contains("Monday");
   });
 
+  //This test is for booking an interview: Typing in a name, selecting an interviewer, and hitting "save."
   it("should book an interview", () => {
 
     cy.get("[alt=Add]")
@@ -27,6 +30,7 @@ describe("Appointments", () => {
 
   });
 
+  //This test is for editing an existing interview: Editing the name, selecting a different interviewer, and hitting "save."
   it("should edit an interview", () => {
 
     cy.get("[alt=Edit]")
@@ -47,6 +51,7 @@ describe("Appointments", () => {
 
   });
 
+  //This test is for deleting an existing interview, and ensuring that the deletion occurs.
   it("should delete an interview", () => {
 
     cy.get("[alt=Delete]")

@@ -12,16 +12,19 @@ export default function Form(props) {
 
   const [error, setError] = useState("");
 
+  //This function resets the form data (name and interviewer).
   const reset = function() {
     setName("");
     setInterviewer(null);
   }
 
+  //This function is called when the user hits "cancel," and it passes through the above reset function.
   const cancel = function() {
     reset();
     props.onCancel();
   }
 
+  //This function checks to see if a student name is present. If it isn't, it prevents the appointment from being saved and shows the user an error message.
   const validate = function() {
     if (name === "") {
       setError("Student name cannot be blank");

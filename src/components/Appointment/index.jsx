@@ -16,6 +16,7 @@ export default function Appointment(props) {
 
   const { id, interview, time, interviewers, bookInterview, cancelInterview} = props;
 
+  //Creating variables allows us to refer to these views without quotation marks later on:
   const EMPTY = "EMPTY";
   const SHOW = "SHOW";
   const CREATE = "CREATE";
@@ -26,10 +27,12 @@ export default function Appointment(props) {
   const ERROR_SAVE = "ERROR_SAVE";
   const ERROR_DELETE = "ERROR_DELETE";
 
+  //We destructure the object returned by the useVisualMode hook to get access to mode, transition, and back. We also set the initial visual state of the component based on whether there is an interview booked.
   const { mode, transition, back } = useVisualMode(
     interview ? SHOW : EMPTY
   );
 
+  //This function handles saving an appointment
   function save(name, interviewer) {
     const interview = {
       student: name,
@@ -41,6 +44,7 @@ export default function Appointment(props) {
       .catch(error => transition(ERROR_SAVE, true));
   }
 
+  //This function handles deleting an appointment. (Note: called "destroy" since "delete" is a reserved word.)
   function destroy() {
     transition(DELETING, true);
     cancelInterview(id)
@@ -56,6 +60,7 @@ export default function Appointment(props) {
     transition(EDIT)
   }
   
+  //The below renders the appointment card with the appropriate component based on the current mode:
   return (
     <article className="appointment" data-testid="appointment">
       <Header

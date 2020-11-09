@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import "components/styling/InterviewerList.scss";
 
 export default function InterviewerList(props) {
+  //The below loops through the interviewers array to render each interviewer as an InterviewerListItem:
   const interviewers = props.interviewers.map(interviewer => {
     const {id, name, avatar } = interviewer;
     return (

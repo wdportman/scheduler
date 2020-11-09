@@ -1,3 +1,5 @@
+//The tests in this file make sure that the button renders as expected - e.g. styling based on class.
+
 import React from "react";
 
 import { render, cleanup, fireEvent } from "@testing-library/react";

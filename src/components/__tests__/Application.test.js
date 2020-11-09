@@ -10,6 +10,7 @@ afterEach(cleanup);
 
 describe("Application", () => {
 
+  //This test makes sure that the day changes when you click on a new day in the sidebar.
   it("changes the schedule when a new day is selected", async () => {
     const { getByText } = render(<Application />);
 
@@ -21,6 +22,7 @@ describe("Application", () => {
   });
 
 
+  //This test makes sure the app performs as expected upon booking a new interview.
   it("loads data, books an interview, and reduces the spots remaining for Monday by 1", async () => {
     const { container } = render(<Application/>);
 
@@ -45,6 +47,7 @@ describe("Application", () => {
   });
 
 
+  //This test makes sure the app performs as expected upon deleting an existing interview.
   it("loads data, cancels an interview, and increases the spots remaining for Monday by 1", async () => {
     const { container } = render(<Application/>);
 

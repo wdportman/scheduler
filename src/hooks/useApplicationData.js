@@ -3,6 +3,7 @@ import axios from 'axios';
 
 const useApplicationData = () => {
 
+  //The below manages state for the application. We pass it some initial values in the format we need:
   const [state, setState] = useState({
     day: "Monday",
     days: [],
@@ -16,6 +17,7 @@ const useApplicationData = () => {
     interviewers: {}
   });
 
+  //The below sets the state after getting data from the scheduler API via HTTP Axios requests.
   useEffect(() => {
     Promise.all([
       Promise.resolve(axios.get('/api/days')),
@@ -28,6 +30,7 @@ const useApplicationData = () => {
 
   const setDay = (day) => setState({ ...state, day });
 
+  //The below dynamically updates the number of spots remaining for each day, based on appointments data from the scheduler API:
   const updateSpots = (day, days, appointments) => {
     const currentDay = days.find((anyDay) => anyDay.name === day);
     const currentAppts = currentDay.appointments;
@@ -40,6 +43,7 @@ const useApplicationData = () => {
     currentDay.spots = spots;
   };
 
+  //The below updates the database, updates state, and updates the "spots remaining" function above when a new interview is booked.
   function bookInterview(id, interview) {
     const appointment = {
       ...state.appointments[id],
@@ -56,6 +60,7 @@ const useApplicationData = () => {
       })
   };
 
+  //The below updates the database and the state when an interview is canceled/deleted:
   function cancelInterview(id) {
     return axios.delete(`api/appointments/${id}`)
       .then(() => {

@@ -3,6 +3,7 @@ import classNames from 'classnames';
 
 import 'components/styling/DayListItem.scss';
 
+//The below function sets the correct wording for the "spots remaining" based on how many there are.
 const formatSpots = function(num) {
   if (num === 0) {
     return `no spots remaining`;
